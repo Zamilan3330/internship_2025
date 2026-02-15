@@ -1,0 +1,489 @@
+%----------------------------------------------------------------------------------------
+%   Доорх хэсгийг өөрчлөх шаардлагагүй
+%----------------------------------------------------------------------------------------
+% !TEX root = ./main.tex
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\documentclass[12pt,A4]{report}
+
+\usepackage{fontspec,xltxtra,xunicode}
+\setmainfont[Ligatures=TeX]{Times New Roman}
+\setsansfont{Arial}
+
+% Set a monospaced font that supports Cyrillic/Mongolian
+\setmonofont{Consolas}
+
+% \usepackage[utf8x]{inputenc}
+% \usepackage[mongolian]{babel}
+% \usepackage{natbib}
+\usepackage{geometry}
+%\usepackage{fancyheadings} fancyheadings is obsolete: replaced by fancyhdr. JL
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsbsy}
+\usepackage{dcolumn,array}
+\usepackage{tocloft}
+\usepackage{dics}
+\usepackage{nomencl}
+\usepackage{upgreek}
+\newcommand{\argmin}{\arg\!\min}
+\usepackage{mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{listings}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\makeatletter
+\usepackage{caption}
+\captionsetup[table]{belowskip=0.5pt}
+\usepackage{subfiles}
+
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Код}
+\renewcommand{\lstlistlistingname}{\lstlistingname ын жагсаалт}
+
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.99,0.99,0.99}
+ 
+\lstdefinestyle{mystyle}{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    %basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=false,                 
+    numbers=left,                    
+    numbersep=10pt,                  
+    showspaces=false,                
+    showstringspaces=true,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle, label=DescriptiveLabel} 
+
+% Remove the default label to avoid multiply defined label errors
+\lstset{style=mystyle}
+
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+\makenomenclature
+\geometry{
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm
+}
+\begin{document}
+
+
+%----------------------------------------------------------------------------------------
+%   Өөрийн мэдээллээ оруулах хэсэг
+%----------------------------------------------------------------------------------------
+
+% Дипломийн ажлын сэдэв
+\title{МЭДЭЭЛЛИЙН ТЕХНОЛОГИ ХӨТӨЛБӨРИЙН ҮЙЛДВЭРИЙН ДАДЛАГЫН ТАЙЛАН}
+% Дипломын ажлын англи нэр
+\titleEng{Intership Report}
+% Өөрийн овог нэрийг бүтнээр нь бичнэ
+\author{Содномжамцын Замилан}
+% Өөрийн овгийн эхний үсэг нэрээ бичнэ
+\authorShort{С. Замилан123}
+% Удирдагчийн зэрэг цол овгийн эхний үсэг нэр
+\supervisor{Директори. С. Дамдинсүрэн}
+
+% СиСи дугаар 
+\sisiId{22B1NUM7566}
+% Их сургуулийн нэр
+\university{МОНГОЛ УЛСЫН ИХ СУРГУУЛЬ}
+% Бүрэлдэхүүн сургуулийн нэр
+\faculty{МЭДЭЭЛЛИЙН ТЕХНОЛОГИ, ЭЛЕКТРОНИКИЙН СУРГУУЛЬ}
+% Тэнхимийн нэр
+\department{МЭДЭЭЛЭЛ, КОМПЬЮТЕРЫН УХААНЫ ТЭНХИМ}
+% Зэргийн нэр
+\degreeName{Дадлага ажлын тайлан}
+% Суралцаж буй хөтөлбөрийн нэр
+\programeName{Мэдээллийн технологи (D061304)}
+% Хэвлэгдсэн газар
+\cityName{Улаанбаатар}
+% Хэвлэгдсэн огноо
+\gradyear{2025 оны 09 сар}
+
+
+%----------------------------------------------------------------------------------------
+%   Доорх хэсгийг өөрчлөх шаардлагагүй
+%----------------------------------------------------------------------------------------
+\include{main-pre}
+% Удиртгалыг оруулж ирэх ба abstract.tex файлд удиртгалаа бичнэ
+\include{abstract}
+
+%----------------------------------------------------------------------------------------
+%   Дипломын үндсэн хэсэг эндээс эхэлнэ
+%----------------------------------------------------------------------------------------
+%\addcontentsline{toc}{part}{БҮЛГҮҮД}
+% Шинэ бүлэг
+\chapter{БАЙГУУЛЛАГЫН ТАНИЛЦУУЛГА}
+\subfile{company.tex}
+
+\chapter{Ижил технологиудын судалгаа}
+\subfile{same-tech.tex}
+
+\chapter{ДАДЛАГА АЖЛЫН ТАНИЛЦУУЛГА}
+% \section{Төслийн ерөнхий танилцуулга}
+    Дадлага ажлын хүрээнд 2 өөр технологи дээр ажилласан. FAST, FIX протоколын судалгаа болон Бидисек компанийн фейсбүүк, инстаграм хаягуудыг чатботыг хөгжүүлсэн. FAST, FIX протоколын хувьд өмнө нь одоогийн ашигладаг системээ гуравдагч байгууллагаар гүйцэтгүүлсэн учир өмнө нь ажиллагаа болон эдгээр протоколыг судалсан ажилтан байгаагүй. 8 сарын 11-нээс хойш чатбот, автомат хариулагчийн хэрэгцээ гарснаар n8n платформыг судалж эхэлсэн.
+% \section{}
+\section{Зорилго, хамрах хүрээ}
+
+\textbf{Зорилго:} FB/IG сувгуудаар хэрэглэгчийн асуултад 24/7 автомат хариулах, FAQ шийдэх, лийд цуглуулах, шаардлагад хүний оператор руу шилжүүлэх.
+
+\section{Функциональ шаардлага}
+\begin{itemize}
+  \item Мэндчилгээ ба хэл сонголт (MN/EN авто-илрүүлэлт, гар сонголт).
+  \item FAQ автоматаар хариулах (эрэмбэлэлттэй мэдлэгийн бааз эсвэл AI).
+  \item Лийд цуглуулах (нэр, хаяг) ба зөвшөөрөл авах; CRM/Sheets-д хадгалах.
+  \item Human handover (операторт шилжүүлэх, дахин бот руу буцах).
+  \item 24 цагийн турш мессежийн цонх, платформын бодлого мөрдөх (FB/IG).
+  \item Олон хэлтэй агуулгын удирдлага (контентын версионинг, fallback хэл).
+  \item Контекст санах ой (сүүлийн 5-10 мессежийг хадгалах).
+  \item AI RAG хариу (ишлэл/эх сурвалж хавсаргах).
+  \item Хариулж чадаагүй асуултуудаа дараа нь брокер түүнд нь хариулахад зориулан тэмдэглэж авах.
+\end{itemize}
+
+\textbf{Хамрах хүрээ:} Facebook Page Messenger, Instagram DM; AI-гаар хариу үүсгэх, мэдлэгийн бааз ашиглах.
+
+\section{Сувгийн (Channel) шаардлага}
+
+\subsection{Facebook Messenger}
+
+\subsubsection{Зөвшөөрлүүд (Permissions)}
+\begin{itemize}
+    \item \textbf{Шаардлагатай:} pages\_messaging, pages\_manage\_metadata, pages\_read\_engagement
+    \item \textbf{Сонголт:} pages\_manage\_engagement, pages\_show\_list
+\end{itemize}
+
+\subsubsection{Webhooks (Page object)}
+\begin{itemize}
+    \item messages
+    \item messaging\_postbacks
+    \item message\_deliveries
+    \item message\_reads
+    \item standby (handover-д)
+\end{itemize}
+
+\subsection{Instagram Messaging}
+
+\subsubsection{Зөвшөөрлүүд (Permissions)}
+\begin{itemize}
+    \item instagram\_manage\_messages
+    \item instagram\_basic
+    \item pages\_manage\_metadata
+    \item pages\_read\_engagement
+\end{itemize}
+
+\subsubsection{Webhooks (Instagram object)}
+\begin{itemize}
+    \item messages (+ postbacks/handovers боломжтой бол)
+\end{itemize}
+
+\subsubsection{Тохиргооны онцлогууд}
+\begin{itemize}
+    \item 24-цагийн хариулах цонх мөрдөх
+    \item Quick Replies, CTA Buttons
+    \item FB Page-тай холбогдсон IG Business/Creator account шаардлагатай
+\end{itemize}
+
+\section{Интеграци ба архитектур}
+
+\subsection{n8n триггерүүд}
+\begin{itemize}
+    \item \textbf{Webhook Trigger:} Meta Webhook-ийг хүлээн авах
+    \item \textbf{Cron:} Технический ажил
+    \item \textbf{HTTP Request:} Graph API дуудах
+\end{itemize}
+
+\subsection{Meta Graph API}
+\begin{itemize}
+    \item Мессеж илгээх/уншсан тэмдэглэл
+    \item Typing indicators
+    \item Attachments илгээх/авах
+\end{itemize}
+
+\subsection{AI давхарга (сонголт)}
+\begin{itemize}
+    \item \textbf{AI Platforms:} OpenAI/Claude/Azure OpenAI интеграци
+    \item \textbf{RAG:} Вектор сан (FAISS/Pinecone/Weaviate)
+    \item \textbf{Удирдлага:} Prompt удирдлага, guardrails
+\end{itemize}
+
+\subsection{Мэдлэгийн бааз}
+\begin{itemize}
+    \item Баримт импорт
+    \item Chunking
+    \item Embeddings
+    \item Индекс шинэчлэх workflow
+\end{itemize}
+
+
+\chapter{ТЕХНОЛОГИЙН СУДАЛГАА}
+\section{FAST, FIX протокол}
+
+FAST (FIX Adapted for STreaming) болон FIX (Financial Information eXchange) протоколууд нь санхүүгийн салбарт өгөгдөл дамжуулахад өргөн хэрэглэгддэг технологиуд бөгөөд өндөр хурд, бага хоцрогдол (low latency), өгөгдлийн шахалт зэрэг онцлогтой. Эдгээртэй ижил төстэй технологийн судалгаа хийхдээ бид ижил зорилготой, өндөр хурдны өгөгдөл дамжуулалт, найдвартай байдал, эсвэл санхүүгийн системд ашиглагддаг бусад протоколуудыг авч үзэж болно.
+
+\subsection{FIX Протокол}
+
+{\textbf{Тодорхойлолт:}} Санхүүгийн гүйлгээний мэдээлэл (жишээ нь, хувьцааны захиалга, гүйлгээний статус) солилцоход зориулагдсан стандарт протокол.
+
+\subsubsection{Онцлогууд}
+\begin{itemize}
+    \item \textbf{Формат:} Текст суурьтай
+    \item \textbf{Унших боломж:} Хялбар уншигддаг
+    \item \textbf{Гүйцэтгэл:} Том хэмжээний өгөгдөлд харьцангуй удаан байж болно
+    \item \textbf{Стандартжилт:} Олон улсын стандарт протокол
+\end{itemize}
+
+\subsection{FAST Протокол}
+
+{\textbf{Тодорхойлолт:}} FIX-ийн өндөр хурдны хувилбар бөгөөд өгөгдлийн шахалт, хоёртын (binary) форматыг ашиглан бага хоцрогдолтой, өндөр хурдны өгөгдөл дамжуулалтыг дэмждэг.
+
+\subsubsection{Онцлогууд}
+\begin{itemize}
+    \item \textbf{Формат:} Хоёртын (binary) формат
+    \item \textbf{Өгөгдлийн шахалт:} Дэвшилтэт шахалтын алгоритм
+    \item \textbf{Хурд:} Өндөр хурдны дамжуулалт
+    \item \textbf{Хоцрогдол:} Бага хоцрогдол (low latency)
+    \item \textbf{Хэрэглээ:} Биржийн худалдаа, зах зээлийн өгөгдөл дамжуулахад өргөн хэрэглэгддэг
+\end{itemize}
+
+\subsection{Харьцуулалт}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{5cm}|p{5cm}|}
+\hline
+\textbf{Шинж чанар} & \textbf{FIX Протокол} & \textbf{FAST Протокол} \\
+\hline
+\hline
+Формат & Текст суурьтай & Хоёртын формат \\
+\hline
+Унших боломж & Хялбар уншигддаг & Тусгай багаж шаарддаг \\
+\hline
+Гүйцэтгэл & Харьцангуй удаан & Өндөр хурдтай \\
+\hline
+Өгөгдлийн хэмжээ & Том хэмжээтэй & Шахагдсан, бага хэмжээтэй \\
+\hline
+Хоцрогдол & Харьцангуй өндөр & Бага хоцрогдолтой \\
+\hline
+Хэрэглээний салбар & Ерөнхий санхүүгийн гүйлгээ & Биржийн худалдаа, зах зээлийн өгөгдөл \\
+\hline
+Хэрэгжүүлэх нарийн төвөгтэй байдал & Хялбар & Нарийн төвөгтэй \\
+\hline
+\end{tabular}
+\caption{FIX болон FAST протоколуудын харьцуулалт}
+\end{table}
+
+\subsection{Дүгнэлт}
+
+FIX болон FAST протоколууд нь санхүүгийн салбарт чухал үүрэг гүйцэтгэдэг технологиуд юм. FIX протокол нь энгийн, уншихад хялбар бөгөөд олон төрлийн санхүүгийн гүйлгээнд тохиромжтой. Харин FAST протокол нь өндөр хурд, бага хоцрогдол шаарддаг тохиолдолд, ялангуяа биржийн худалдаа болон зах зээлийн өгөгдөл дамжуулахад илүү тохиромжтой сонголт юм.
+
+\section{RAG Технологи}
+
+RAG (Retrieval-Augmented Generation) технологи нь том хэлний загварууд (Large Language Models - LLM) болон мэдээлэл хайх системийг хослуулан, илүү нарийн, найдвартай хариулт гаргах арга юм. Энэ нь generative AI-ийн чадварыг мэдээлэл хайлтын (retrieval) системтэй нэгтгэж, хэрэглэгчийн асуултад илүү бодитой, гадаад эх сурвалж дээр тулгуурласан хариулт өгдөг. RAG-ийн гол зорилго нь LLM-ийн өөрийн мэдлэгийн хязгаарлалтыг (жишээ нь, сургалтын өгөгдлийн хугацаа эсвэл мэдлэгийн дутагдал) даван туулахад оршино.\cite{rag?}
+
+\subsection{RAG-ийн Үндсэн Бүтэц ба Ажиллах Зарчим}
+
+RAG систем нь гурван үндсэн хэсгээс бүрдэнэ:
+
+\begin{enumerate}
+    \item{\textbf{Retrieval (Мэдээлэл Хайлт):}} Хэрэглэгчийн асуултыг хүлээн авч, гадаад мэдлэгийн санд (knowledge base, жишээ нь, вектор мэдээллийн сан эсвэл вэб эх сурвалж) хайлт хийнэ. Энэ үед semantic search (утгын төстэй хайлт) ашиглаж, холбогдох өгүүлбэр, баримт бичгийг олж авдаг. Жишээ нь, Pinecone эсвэл FAISS зэрэг вектор мэдээллийн сангуудыг ашигладаг.\cite{rag1}
+
+    \item{\textbf{Augmentation (Өгөгдлийг Өргөтгөх):}} Олж авсан мэдээллийг асуулттай хослуулан, LLM-д илгээнэ. Ингэснээр загвар нь өөрийн сургалтын мэдлэгээс гадна шинэ, бодит мэдээлэл дээр тулгуурлан хариулт гаргадаг.
+
+    \item{\textbf{Generation (Үүсгэлт):}} LLM (жишээ нь, GPT загварууд) өгөтгөсөн мэдээлэл дээр тулгуурлан хариулт үүсгэнэ. Энэ нь хуурамч мэдээлэл (hallucination) гаргах эрсдэлийг бууруулдаг.\cite{rag2}
+\end{enumerate}
+
+\subsection{RAG-ийн Давуу Талууд}
+
+\begin{itemize}
+    \item \textbf{Нарийвчлал Өндөр:} LLM-ийн өөрийн мэдлэгээс илүүтэй гадаад эх сурвалж ашигладаг тул илүү үнэн зөв хариулт өгдөг\cite{rag3}
+    \item \textbf{Шинэчлэгдэх Чадвар:} Мэдлэгийн санг шинэчилж болдог тул загварыг дахин сургахгүйгээр мэдлэгийг өргөтгөнө
+    \item \textbf{Зардлын Хэмнэлт:} Бүтэн загварыг дахин сургахгүй, зөвхөн retrieval хэсгийг ашигладаг
+    \item \textbf{Хэрэглээний Жишээ:} Чатбот, асуулт-хариултын систем (жишээ нь, IBM Watson эсвэл AWS-ийн системүүд), мэдээлэл хайлтын аппликейшнүүдэд өргөн ашиглагддаг. \cite{rag4}
+\end{itemize}
+
+\subsection{RAG-ийн Сул Талууд ба Сорилтууд}
+
+\begin{itemize}
+    \item \textbf{Хайлтын Нарийвчлал:} Хэрэв retrieval хэсэг буруу мэдээлэл олж авбал хариулт алдаатай болно
+    \item \textbf{Хоцрогдол (Latency):} Мэдээлэл хайх процесс нь хугацаа зарцуулдаг тул бодит цагийн системд саад болж болно
+    \item \textbf{Өгөгдлийн Нууцлал:} Гадаад эх сурвалж ашиглах үед өгөгдлийн аюулгүй байдлыг хангах шаардлагатай. \cite{rag5}
+\end{itemize}
+
+RAG нь AI-ийн салбарт чухал дэвшил бөгөөд, жишээ нь, NVIDIA, IBM, Oracle зэрэг компаниудын платформуудад нэгтгэгдсэн байдаг.\cite{rag?} Цаашид advanced RAG (жишээ нь, multi-hop retrieval) зэрэг өргөтгөлүүд хөгжиж байна.
+
+\section{n8n AI Automation}
+
+n8n нь нээлттэй эхийн (open-source) ажлын урсгалын автоматжуулалтын хэрэгсэл бөгөөд, Zapier эсвэл Make-тай төстэй боловч илүү уян хатан, өөрчлөх боломжтой. Энэ нь node-based интерфейс ашиглан ажлын урсгалыг бүтээдэг бөгөөд, AI automation-ийн хувьд AI загваруудыг (жишээ нь, LLM-үүд) ажлын урсгалд нэгтгэх боломж өгдөг. n8n-ийн AI онцлогууд нь бизнес процесс, өгөгдлийн боловсруулалт, автоматжуулалтыг AI-ийн тусламжтай илүү ухаалаг болгодог.\cite{n8n?}
+
+\subsection{n8n-ийн Үндсэн Онцлогууд}
+
+\begin{itemize}
+    \item \textbf{Визуал Интерфейс:} Drag-and-drop аргаар node-уудыг холбож ажлын урсгал бүтээнэ. Жишээ нь, өгөгдөл авах, боловсруулах, илгээх зэрэг алхмуудыг хялбархан зохион байгуулна. \cite{n8n1}
+    \item \textbf{500+ Интеграци:} Google, Slack, OpenAI, GitHub зэрэг 500 гаруй сервистэй холбогдох боломжтой.
+    \item \textbf{Кодын Дэмжлэг:} JavaScript эсвэл Python код оруулж, өөрчлөн тохируулах.
+    \item \textbf{Триггер ба Активатор:} Вэбхүүк, цагийн хуваарь, имэйл зэрэг триггерүүдээр ажлын урсгалыг эхлүүлнэ. \cite{n8n?}
+\end{itemize}
+
+\subsection{n8n-ийн AI Automation Онцлогууд}
+
+n8n нь AI-ийг ажлын урсгалд нэгтгэхэд зориулагдсан тусгай node-уудтай бөгөөд, LangChain, Hugging Face зэрэг AI хэрэгслүүдтэй холбогддог. Гол онцлогууд:
+
+\begin{itemize}
+    \item \textbf{AI Node-ууд:} AI моделийг ашиглан текст боловсруулах, хэлний ойлголт (natural language understanding), өгөгдлийн шинжилгээ хийх. Жишээ нь, OpenAI-ийн GPT загварыг ашиглан имэйл хариулт үүсгэх эсвэл өгөгдлийг ангилна. \cite{n8n3}
+    \item \textbf{AI Agents:} Ухаалаг агент бүтээх боломж – агент нь текст хүлээн авч, AI загвараар боловсруулж, вектор мэдээллийн санд хайлт хийж, хариулт өгнө. Энэ нь RAG-тай төстэй зарчмаар ажилладаг
+    % \item \textbf{Agent-to-Agent Харилцаа:} Шинэ онцлог болох нэг AI агент өөр агентыг дуудаж ашиглах – ингэснээр илүү нарийн төвөгтэй урсгалууд бүтээнэ, жишээ нь, нэг агент мэдээлэл хайж, нөгөө нь шинжилнэ
+    \item \textbf{AI Workflow Бүтээх:} Жишээ нь, сошиал медиа постыг AI-аар шинжилж, хариу өгөх, эсвэл өгөгдлийн боловсруулалтыг автоматжуулах. n8n нь self-hosting дэмждэг тул өгөгдлийн нууцлалыг хангана. \cite{n8n2}
+    \item \textbf{Интеграциуд:} LangChain-тай холбогдож, chain-based AI урсгал бүтээх; эсвэл Hugging Face-ийн загваруудыг ашиглах
+\end{itemize}
+
+\subsection{n8n AI Automation-ийн Хэрэглээний Жишээ}
+
+\begin{enumerate}
+    \item \textbf{Бизнес Автоматжуулалт:} Имэйлээс өгөгдөл гаргаж, AI-аар ангилж, CRM системд оруулах
+    \item \textbf{Контент Үүсгэлт:} Сошиал медиа постыг AI-аар үүсгэж, шалгах
+    \item \textbf{Өгөгдлийн Шинжилгээ:} Том өгөгдлийг AI-аар боловсруулж, тайлан гаргах
+    \item \textbf{Чатбот Интеграци:} AI агент ашиглан хэрэглэгчийн асуултад хариулах
+\end{enumerate}
+
+\subsection{n8n-ийн Давуу ба Сул Талууд}
+
+\subsubsection{Давуу тал}
+\begin{itemize}
+    \item Нээлттэй эх
+    \item Үнэгүй (self-hosting)
+    \item Уян хатан
+    \item AI-ийн өргөн дэмжлэг
+\end{itemize}
+
+\subsubsection{Сул тал}
+\begin{itemize}
+    \item Сурч авахад цаг зарцуулж болно
+    \item Том урсгалуудад гүйцэтгэл анхаарах хэрэгтэй
+\end{itemize}
+
+\subsection{Дүгнэлт}
+
+RAG технологи болон n8n AI automation нь орчин үеийн AI систем бүтээхэд чухал хэрэгслүүд юм. RAG нь мэдээлэл хайлт болон текст үүсгэлтийг хослуулан найдвартай хариулт гаргадаг бол, n8n нь эдгээр AI технологиудыг бизнес процессын автоматжуулалтад хялбархан нэгтгэх боломж олгодог. Хоёуланг нь хослуулан ашиглах нь ухаалаг, автоматжуулсан системүүд бүтээхэд том боломж олгоно.
+
+\chapter{ХЭРЭГЖҮҮЛЭЛТ}
+\subfile{implementation.tex}
+\newgeometry{left=3cm,right=3cm,top=2.5cm,bottom=2cm,includefoot}
+
+\superchapter{ДҮГНЭЛТ}
+
+   BDsec-ийн харилцагчдад зориулсан хиймэл оюуны агентын систем мессеж ба n8n урсгалыг цогцоор нь шинэчилж, бодлогын дагуу, найдвартай ажиллах архитектурыг бүрдүүллээ. Хэрэглэгчийн мессежийг ангилан (мэндчилгээ, цар хүрээ, зах зээлийн асуулт) боловсруулах, үндсэн хариултыг Get\_answers болон вектор сангаас тогтмол хайх, шаардлагатай үед мэдээг SerpAPI-гаар нөхөх, өдөр тутмын топ өсөлт/бууралттай хувьцааны мэдээллийг Redis-ээс шуурхай хүргэх, хангалтгүй тохиолдолд Put\_Unanswered-ээр бүртгэн ажилтны тусламж руу дамжуулах логикоор баталгаажсан. Бүх хариултыг монгол хэлээр, дотоод процесс ил болголгүй, таамаглал хийхгүй хүрэхийн зэрэгцээ баталгаажуулалтын чеклист, алдааны түр шийдлийн журамтай болсон. Үүний үр дүнд хэрэглэгчийн асуултад илүү түргэн, тогтвортой, алдаа багатайгаар хариулах, ажилтнуудын ачааллыг бууруулах, мэдлэгийн санг тасралтгүй баяжуулах өгөгдлийн гогцоо бий боллоо. Эрсдэлийн удирдлагын хувьд хүрээнээс гадуур агуулгыг зохих ёсоор хааж, хөрөнгө оруулалтын зөвлөгөө өгөхөөс сэргийлэх бодлогыг хэрэгжүүлсэн. Дүгнэвэл, энэхүү шийдэл нь үйлдвэрлэлийн орчинд хэрэглэхэд бэлэн, гүйцэтгэлийн хэмжүүрүүдийг тогтмол хянах, хэл шинжлэлийн сайжруулалт хийх замаар улам боловсронгуй болгох суурийг тавьсан.
+
+\newgeometry{left=3cm,right=3cm,top=2.5cm,bottom=2cm,includefoot}
+
+\renewcommand{\bibname}{\begin{center}\textbf{НОМ ЗҮЙ}\end{center}}
+
+\addcontentsline{toc}{part}{НОМ ЗҮЙ}
+
+\begin{thebibliography}{}
+    \bibitem{company}
+    bdsec.mn вебсайт \url{https://www.bdsec.mn/}
+    \bibitem{rag?}
+    What Is Retrieval-Augmented Generation, aka RAG? on nvidia
+    \url{https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation/}
+    \bibitem{rag1}
+    Retrieval-Augmented Generation (RAG)
+    \url{https://www.pinecone.io/learn/retrieval-augmented-generation/}
+    \bibitem{rag2}
+    What is RAG (retrieval augmented generation)? on ibm \url{https://www.ibm.com/think/topics/retrieval-augmented-generation}
+    \bibitem{rag3}
+    What is RAG (Retrieval-Augmented Generation)? on aws
+     \url{https://aws.amazon.com/what-is/retrieval-augmented-generation/}
+    \bibitem{rag4}
+    Retrieval Augmented Generation (RAG) in Azure AI Search
+     \url{https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview}
+    \bibitem{rag5}
+    What is retrieval augmented generation (RAG) [examples included]
+    \url{https://www.superannotate.com/blog/rag-explained}
+    \bibitem{n8n?}
+    \url{https://n8n.io/ai/}
+    \bibitem{n8n1}
+    Part 1: Introduction to n8n — What It Is and How It Works
+    \url{https://medium.com/data-and-beyond/part-1-introduction-to-n8n-what-it-is-and-how-it-works-74c214de769e}
+    \bibitem{n8n2}
+    The Ultimate Beginner's Guide to n8n AI-Workflows and AI Agents
+    \url{https://www.getpassionfruit.com/blog/the-ultimate-beginner-s-guide-to-n8n-ai-workflows-and-ai-agents}
+    \bibitem{n8n3}
+    n8n’s AI Agent-to-Agent Feature Is Reshaping Workflow Automation
+    \url{https://pegotec.net/n8n-ai-agent-to-agent-feature-is-reshaping-workflow-automation/}
+\end{thebibliography}
+
+\superchapter{ХАВСРАЛТ}
+
+\begin{lstlisting}[language=Java, caption=Шинэ мөр устгах код, frame=single]
+function cleanNewlines(s = '') {
+  return String(s)
+    .replace(/(\r\n|\r|\n|\u2028|\u2029)/g, ' ') // Any newline → space
+    .replace(/<br\s*\/?>/gi, ' ')                // HTML <br>
+    .replace(/[\x00-\x09\x0B-\x1F\x7F]/g, ' ')   // Control chars
+    .replace(/\s{2,}/g, ' ')                     // Collapse multiple spaces
+    .trim();
+}
+
+// Raw text source precedence
+const raw = String(
+  $input.first().json.output ??
+  $input.first().json.response ??
+  $json.message ??
+  $json.body ??
+  ''
+);
+
+// First: normalize whitespace/newlines
+let text_clean = cleanNewlines(raw);
+
+// OPTION A: Remove ALL double quotes (straight ASCII ")
+text_clean = text_clean.replace(/"/g, '');
+
+// If you ALSO want to remove other quote styles (curly, guillemets) uncomment:
+// text_clean = text_clean.replace(/["“”«»„‟]/g, '');
+
+// OPTION B (instead of A): Only strip if the entire string is wrapped in a single pair of quotes:
+// text_clean = text_clean.replace(/^"(.*)"$/s, '$1');
+
+// Fetch sender / recipient safely
+const fixNode = $('Fix Deduplication').first().json;
+let sender, recipient;
+try {
+  sender = fixNode.body.entry[0].messaging[0].sender.id;
+  recipient = fixNode.body.entry[0].messaging[0].recipient.id;
+} catch (e) {
+  sender = sender ?? null;
+  recipient = recipient ?? null;
+}
+
+return [{
+  json: {
+    ...$json,
+    text_clean,
+    sender,
+    recipient,
+  }
+}];
+\end{lstlisting}
+
+\end{document}

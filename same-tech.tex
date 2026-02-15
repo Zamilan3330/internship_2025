@@ -1,0 +1,234 @@
+\section{FAST, FIX протоколтой ижил технологиуд}
+\subsection{FIXP + SBE (FIX Performance Session Layer + Simple Binary Encoding)}
+
+\textbf{Тодорхойлолт}
+ FIX Trading Community-гийн санал болгодог өндөр гүйцэтгэлтэй стек. FIXP нь сешн/холболтын давхаргыг, SBE нь мессежийн бинар кодчиллыг хангана.
+
+\textbf{Зорилго:} FIX-ийн уян хатан байдал, стандартжилтыг хадгалж, FAST-тай харьцуулахад илүү бага latency, бага overhead-тай болгох.
+
+\textbf{Техникийн онцлог}
+\begin{itemize}
+    \item \textbf{SBE:} урьдчилан тодорхойлсон схем дээр тулгуурласан компакт бинар кодчилол, CPU/кэшд ээлтэй
+    \item \textbf{Дамжуулалт:} ихэвчлэн TCP/UDP, multicast-тэй хослуулж болно
+\end{itemize}
+
+
+{\textbf{Давуу тал:}}
+\begin{itemize}
+    \item Бага latency
+    \item Өндөр throughput
+    \item FIX экосистемтэй нийцтэй
+\end{itemize}
+
+{\textbf{Сул тал:}}
+\begin{itemize}
+    \item Схем удирдлага шаарддаг
+    \item Хэрэгжүүлэлт, тестийн зардал FIX ASCII-гаас өндөр
+\end{itemize}
+
+\textbf{Хэзээ сонгох вэ:} ultra/low-latency арилжаа, биржийн market data/ордерийн систем, FAST-аас шилжихдээ. \par
+
+\textbf{Nasdaq ITCH/OUCH (+ SoupBinTCP, MoldUDP64)}
+    
+\textbf{Тодорхойлолт}
+\begin{itemize}
+    \item \textbf{ITCH:} Nasdaq-ийн real-time market data (ордерийн ном, гүйлгээ) дамжуулах бинар протокол
+    \item \textbf{OUCH:} ордер илгээх/засах/цуцлахад зориулсан order entry протокол
+    \item \textbf{SoupBinTCP/MoldUDP64:} message framing, sequencing, retransmission-д ашиглагддаг тээврийн давхарга
+\end{itemize}
+
+\textbf{Зорилго:} өндөр хурд, бага latency-тай, бирж-шууд (direct) холболтод зориулсан proprietary стек.
+
+\textbf{Техникийн онцлог}
+\begin{itemize}
+    \item \textbf{ITCH:} UDP multicast (MoldUDP64), sequence+replay механизмаар packet алдагдлыг нөхнө
+    \item \textbf{OUCH:} TCP (SoupBinTCP), найдвартай, дараалал барина
+\end{itemize}
+
+{\textbf{Давуу тал:}}
+\begin{itemize}
+    \item Маш өндөр гүйцэтгэл
+    \item Биржийн фийдтэй хамгийн ойр
+    \item Стандартжсан үйл явдлын загвар
+\end{itemize}
+
+{\textbf{Сул тал:}}
+\begin{itemize}
+    \item Proprietary
+    \item Бирж бүр өөр хувилбар/талбаруудтай
+    \item Портлох зардал өндөр
+\end{itemize}
+
+\textbf{Хэзээ сонгох вэ:} Nasdaq direct market access (DMA), HFT, real-time data consumer.
+
+\subsection{Cboe PITCH/BOE (PITCH market data, BOE order entry)}
+
+\textbf{Тодорхойлолт}
+\begin{itemize}
+    \item \textbf{PITCH:} Cboe-ийн бинар market data протокол (ордерийн номын өөрчлөлт, гүйлгээ)
+    \item \textbf{BOE/BOE+:} (Binary Order Entry) Cboe-ийн order entry протокол
+\end{itemize}
+
+\textbf{Зорилго:} Cboe-гийн платформ дээрх өндөр гүйцэтгэлийн дата түгээлт, ордерийн урсгал.
+
+\textbf{Техникийн онцлог}
+\begin{itemize}
+    \item \textbf{PITCH:} ихэвчлэн UDP multicast + retransmission channel; sequence, snapshot+incremental стратеги
+    \item \textbf{BOE:} TCP; бага latency-д чиглэсэн бинар бүтэц
+\end{itemize}
+
+
+{\textbf{Давуу тал:}}
+\begin{itemize}
+    \item Cboe экосистемд оновчтой
+    \item Өндөр throughput
+    \item Бага latency
+\end{itemize}
+
+{\textbf{Сул тал:}}
+\begin{itemize}
+    \item Proprietary
+    \item Бирж хооронд протокол өөр тул олон биржийн дэмжлэг хэрэгтэй системд интеграцын ачаалал нэмэгдэнэ
+\end{itemize}
+
+\textbf{Хэзээ сонгох вэ:} Cboe-д DMA/market data хэрэглээ, HFT.
+
+\subsection{Товч харьцуулалт}
+
+\textbf{FIX ASCII vs FAST vs SBE/FIXP}
+\begin{itemize}
+    \item \textbf{FIX ASCII:} хүн ойлгоход амар, интеграц амар, latency/size их
+    \item \textbf{FAST:} FIX-ийг шахаж дамжуулах стандарт; варьдаг талбар, темплэйт ашиглан bandwidth бууруулна
+    \item \textbf{SBE/FIXP:} орчин үеийн бинар кодчилол, бага latency, өндөр throughput; FAST-ыг орлох чиг хандлагатай
+\end{itemize}
+
+\textbf{Nasdaq ITCH/OUCH, Cboe PITCH/BOE:}
+\begin{itemize}
+    \item \textbf{Market data:} ITCH/PITCH (UDP multicast, бинар, sequence/replay)
+    \item \textbf{Order entry:} OUCH/BOE (TCP, бинар)
+    \item \textbf{Давуу тал:} гүйцэтгэл
+    \item \textbf{Сул тал:} бирж бүр тусдаа спецификтэй
+\end{itemize}
+
+
+\section{N8N платформ}
+
+Доорх нь n8n AI automation-тэй ижил төстэй платформуудын харьцуулсан товч судалгаа.
+
+\subsection{Ямар үед n8n-тэй төстэй шийдэл хэрэгтэй вэ}
+
+\begin{itemize}
+    \item No/Low-code ажлын урсгал автоматжуулалт
+    \item Олон SaaS үйлчилгээ хооронд интеграци
+    \item AI (LLM, embeddings, дүрэмт логик) ашигласан автомат шийдвэр/агент
+    \item Self-hosted эсвэл Cloud сонголт
+\end{itemize}
+
+\subsection{N8N-тэй төстэй платформуудын Харьцуулалт}
+
+\textbf{Zapier}
+
+\textbf{Товч:} No-code автоматжуулалтын зах зээлийн лидер.
+
+\subsubsection{Техникийн онцлогууд}
+\begin{itemize}
+    \item \textbf{AI:} Zapier AI (Actions, Chatbots/Interfaces, Canvas), OpenAI/Claude интеграци
+    \item \textbf{Интеграци:} 6000+ апп
+    \item \textbf{Хостинг:} Cloud
+\end{itemize}
+
+
+{\textbf{Давуу тал:}}
+\begin{itemize}
+    \item Энгийн, хурдан эхлүүлнэ
+    \item Их интеграци
+    \item Хэрэглэгчийн өргөн бүрдэл
+\end{itemize}
+
+{\textbf{Сул тал:}}
+\begin{itemize}
+    \item Нарийн урсгал/версионинг
+    \item Self-hosted байхгүй
+    \item Үнэлгээ өсөх хандлагатай
+\end{itemize}
+
+\textbf{Хэнд тохирох вэ:} Маркетинг/OPS/SMB хурдан автоматжуулалт.
+
+\subsection{Make (хуучин нэр: Integromat)}
+
+\textbf{Товч:} Visual scenario builder, нөхцөлт салбарлал, модулиуд хүчтэй.
+
+\textbf{Техникийн онцлогууд}
+\begin{itemize}
+    \item \textbf{AI:} OpenAI/Claude модулиуд, сүүлийн үеийн AI блок дэмжлэг
+    \item \textbf{Интеграци:} 1500+
+    \item \textbf{Хостинг:} Cloud (жирийн), Enterprise хувилбаруудтай
+\end{itemize}
+
+{\textbf{Давуу тал:}}
+\begin{itemize}
+    \item Уян хатан урсгал
+    \item Харагдац сайн
+    \item Webhook/iterator хүчтэй
+\end{itemize}
+
+{\textbf{Сул тал:}}
+\begin{itemize}
+    \item Том сценарид засвар-Тестжүүлэлт төвөгтэй
+    \item Үнэ шатлал
+\end{itemize}
+
+\textbf{Хэнд тохирох вэ:} Нарийн логиктой бизнес урсгал.
+
+\subsection{Pipedream}
+
+\textbf{Товч:} Developer-centric automation (код+но-код хосолсон).
+
+\subsubsection{Техникийн онцлогууд}
+\begin{itemize}
+    \item \textbf{AI:} SDK-гаар OpenAI/Bedrock/Vertex зэрэгтэй амархан ажиллана
+    \item \textbf{Интеграци:} 1000+ плюс npm экосистем
+    \item \textbf{Хостинг:} Cloud (Functions-style)
+\end{itemize}
+
+
+{\textbf{Давуу тал:}}
+\begin{itemize}
+    \item Код бичиж нарийн логик хийхэд хамгийн уян хатан
+    \item Developer-дэд ээлтэй интерфейс
+    \item npm экосистемийн дэмжлэг
+\end{itemize}
+
+{\textbf{Сул тал:}}
+\begin{itemize}
+    \item Техникийн ур чадвар шаарддаг
+\end{itemize}
+
+\textbf{Хэнд тохирох вэ:} Инженер багтай байгууллага.
+
+\subsection{Microsoft Power Automate}
+
+\textbf{Товч:} Microsoft 365/Teams/SharePoint экосистемд төгс нийцдэг.
+
+\subsubsection{Техникийн онцлогууд}
+\begin{itemize}
+    \item \textbf{AI:} AI Builder, Copilot Studio, Azure OpenAI интеграци
+    \item \textbf{Интеграци:} 1000+ (ялангуяа M365, Dynamics)
+    \item \textbf{Хостинг:} Cloud/On-premise gateway
+\end{itemize}
+
+
+{\textbf{Давуу тал:}}
+\begin{itemize}
+    \item Аюулгүй байдал, эрх, комплаенс сайн
+    \item Microsoft экосистемтэй гүнзгий интеграци
+    \item Enterprise түвшний боломжууд
+\end{itemize}
+
+{\textbf{Сул тал:}}
+\begin{itemize}
+    \item Лицензийн бүтэц төвөгтэй
+    \item MS бус сервисүүдэд заримдаа шахуу
+\end{itemize}
+
+\textbf{Хэнд тохирох вэ:} Microsoft төвтэй enterprise.
